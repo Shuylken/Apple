@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /*public class Choose_Fruits extends ListActivity  {
 
@@ -26,7 +29,6 @@ import android.widget.SimpleAdapter;
 		setListAdapter(adapter);
 	}*/
 public class Choose_Fruits extends Activity {
-
 	// 定义图片数组
 	private int img[] = new int[] { R.drawable.drawable_apple, R.drawable.drawable_pear, R.drawable.drawable_grape,
 			R.drawable.drawable_orange };
@@ -58,7 +60,7 @@ public class Choose_Fruits extends Activity {
 
 		// 创建一个SimpleAdapter
 		SimpleAdapter simpleAdapter = new SimpleAdapter(this, ListItems, R.layout.fruits_item,
-				new String[] { "img", "names", "descs" }, new int[] { R.id.img, R.id.title, R.id.info });
+				new String[] { "img", "names", "descs" }, new int[] { R.id.img, R.id.title, R.id.textinfo });
 		ListView list = (ListView) findViewById(R.id.listview);
 		list.setAdapter(simpleAdapter);
 		/*
@@ -74,45 +76,19 @@ public class Choose_Fruits extends Activity {
 		 * 添加点击事件 lv.setOnItemClickListener(new OnItemClickListenerImp());
 		 */
 		OnItemClickListener mItemClickListener = new OnItemClickListener() {
-		    @Override
-		    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		         // TODO Auto-generated method stub
-		    	Log.i("text", "OnItemClickListener");
-		    }
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				// TODO Auto-generated method stub
+				Log.i("text",  "onItemClickListener position="+position);
+				ListView lv = (ListView) parent;
+				HashMap<String, Object> person = (HashMap<String, Object>)lv.getItemAtPosition(position);// SimpleAdapter返回Map
+				Toast.makeText(getApplicationContext(), person.toString(), Toast.LENGTH_SHORT).show();
+				if(position==0){
+					Intent i = new Intent(Choose_Fruits.this,FourActivity.class);
+					startActivity(i);
+				}
+			}
 		};
 		list.setOnItemClickListener(mItemClickListener);
 	}
-
-	/*
-	 * private List<Map<String, Object>> getData() {
-	 * 
-	 * List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-	 * 
-	 * Map<String, Object> map = new HashMap<String, Object>(); map.put("img",
-	 * R.drawable.drawable_apple); map.put("title", "苹果"); map.put("info",
-	 * "又大又甜"); list.add(map);
-	 * 
-	 * map = new HashMap<String, Object>(); map.put("img",
-	 * R.drawable.drawable_pear); map.put("title", "梨"); map.put("info", "水多");
-	 * list.add(map);
-	 * 
-	 * map = new HashMap<String, Object>(); map.put("img",
-	 * R.drawable.drawable_grape); map.put("title", "葡萄"); map.put("info",
-	 * "小葡萄"); list.add(map);
-	 * 
-	 * map = new HashMap<String, Object>(); map.put("img",
-	 * R.drawable.drawable_orange); map.put("title", "橘子"); map.put("info",
-	 * "红"); list.add(map);
-	 * 
-	 * map = new HashMap<String, Object>(); map.put("img",
-	 * R.drawable.ic_launcher); map.put("title", "hello"); map.put("info",
-	 * "every thing"); list.add(map);
-	 * 
-	 * map = new HashMap<String, Object>(); map.put("img",
-	 * R.drawable.ic_launcher); map.put("title", "world"); map.put("info",
-	 * "hello world"); list.add(map);
-	 * 
-	 * return list; }
-	 */
-
 }
