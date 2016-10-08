@@ -87,6 +87,7 @@ public class Choose_Fruits extends Activity {
 					Intent i = new Intent(Choose_Fruits.this,FourActivity.class);
 					startActivity(i);
 				}
+				
 			}
 		};
 		list.setOnItemClickListener(mItemClickListener);

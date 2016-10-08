@@ -28,6 +28,9 @@
         
         <activity android:name=".FourAcitvity" >
         </activity>
+        
+        <activity android:name=".Settings" >
+        </activity>
     </application>
 
 </manifest>

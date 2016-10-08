@@ -18,6 +18,7 @@ public class MainActivity extends FourActivity {
 		Button button11=(Button)findViewById(R.id.button11);
 		Button button12=(Button)findViewById(R.id.to_Second);
 		Button button13=(Button)findViewById(R.id.to_three);
+		Button button14=(Button)findViewById(R.id.to_four);
 		
 		button11.setOnClickListener(new OnClickListener() {
 			
@@ -46,6 +47,16 @@ public class MainActivity extends FourActivity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(Intent.ACTION_DIAL);
 				intent.setData(Uri.parse("tel:10086"));
+				startActivity(intent);
+			}
+			
+		});
+		
+		button14.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MainActivity.this,Settings.class);
 				startActivity(intent);
 			}
 			
