@@ -3,6 +3,7 @@ package com.example.apple;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -58,6 +59,7 @@ public class MainActivity extends FourActivity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(MainActivity.this,Settings.class);
 				startActivity(intent);
+				Log.i("Settings", "to_settings.xml");
 			}
 			
 		});
@@ -66,7 +68,7 @@ public class MainActivity extends FourActivity {
 	// 按钮二添加事件
     public void onClick(View v) {
         // TODO Auto-generated method stub
-        Toast.makeText(MainActivity.this, "这是按钮二", Toast.LENGTH_SHORT).show();
+		Toast.makeText(MainActivity.this, "这是按钮二", Toast.LENGTH_SHORT).show();
 
-    }
+	}
 }
